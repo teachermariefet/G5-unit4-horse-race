@@ -115,7 +115,8 @@
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: center;
+            /* Changed to left-alignment to control spacing better */
+            justify-content: flex-start; 
         }
 
         .horse-img {
@@ -128,6 +129,7 @@
 
         .vocab-item {
             position: absolute;
+            /* Anchored safely within the center area of the track, away from the lines */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -135,6 +137,8 @@
             justify-content: center;
             gap: 15px;
             z-index: 10;
+            /* Prevents the block from expanding into clipped zones */
+            max-width: 50%; 
         }
 
         .vocab-text {
@@ -150,8 +154,12 @@
             height: 55px; 
             width: 55px; 
             border-radius: 8px; 
+            /* Added min-width and min-height to guarantee the square shape doesn't squish */
+            min-width: 55px;
+            min-height: 55px;
             object-fit: cover;
             border: 2px solid white;
+            background-color: white; /* Fallback background color */
         }
 
         /* RESULTS OVERLAY */
@@ -233,7 +241,6 @@
     <script>
         const horseFiles = ['horse1.jpg', 'horse2.jpg', 'horse3.jpg', 'horse4.jpg', 'horse5.jpg', 'horse6.jpg', 'horse7.jpg', 'horse8.jpg'];
         
-        // Updated vocabulary words list
         const vocabList = [
             { name: 'backpack', img: 'backpack.jpg' },
             { name: 'cap', img: 'cap.jpg' },
